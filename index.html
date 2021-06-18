@@ -25,11 +25,13 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange('phone', false)" id="phone-minus"
+                              class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="phone-qty" type="text" class="form-control text-center" value="1">
+                           <button onclick="handleProductChange('phone', true)" id="phone-plus"
+                              class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="phone-price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +45,14 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange('case', false)" id="case-minus"
+                              class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-qty" type="text" class="form-control text-center" value="1">
+                           <button onclick=" handleProductChange('case', true)" id="case-plus"
+                              class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="case-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +81,111 @@
          </div>
       </div>
    </section>
+   <script>
+      const casePlus = document.getElementById('case-plus');
+      casePlus.addEventListener('click', function () {
+
+      })
+
+      const caseMinus = document.getElementById('case-minus');
+      caseMinus.addEventListener('click', function () {
+      })
+
+      function handleProductChange(product, isIncrease) {
+         const qty = document.getElementById(product + '-qty');
+         const qtyNum = parseInt(qty.value);
+         let updateQty = qtyNum;
+         if (isIncrease == true) {
+            updateQty = qtyNum + 1;
+         }
+         if (isIncrease == false && qtyNum > 0) {
+            updateQty = qtyNum - 1;
+         }
+         qty.value = updateQty;
+         // const totalPrice = updateQty * 59;
+         let totalPrice = 0;
+         if (product == 'phone'){
+            totalPrice = updateQty * 1219;
+         }
+         if (product == 'case'){
+            totalPrice = updateQty * 59;
+         }
+         document.getElementById(product + '-price').innerText = totalPrice;
+      }
+      const phonePlus = document.getElementById('phone-plus');
+      phonePlus.addEventListener('click', function () {
+
+      })
+      const phoneMinus = document.getElementById('phone-minus');
+      phoneMinus.addEventListener('click', function () {
+      })
+
+      // function ChangeHandler(isPlus,) {
+      //    const phoneQty = document.getElementById('phone-qty');
+      //    const phoneQtyNum = parseInt(phoneQty.value);
+      //    let updatePhoneQty = phoneQtyNum;
+      //    if (isPlus == true) {
+      //       updatePhoneQty = phoneQtyNum + 1;
+      //    }
+      //    if (isPlus == false && phoneQtyNum > 0) {
+      //       updatePhoneQty = phoneQtyNum - 1;
+      //    }
+      //    phoneQty.value = updatePhoneQty;
+      //    const totalPhonePrice = updatePhoneQty * 1219;
+      //    document.getElementById('phone-price').innerText = totalPhonePrice;
+
+      // }
+
+
+      // const phonePlus = document.getElementById('phone-plus');
+      // phonePlus.addEventListener('click', function () {
+      //    const phoneQty = document.getElementById('phone-qty');
+      //    const phoneQtyNum = parseInt(phoneQty.value);
+      //    const updatePhoneQty = phoneQtyNum + 1;
+      //    phoneQty.value = updatePhoneQty;
+      //    const totalPhonePrice = updatePhoneQty * 1219;
+      //    document.getElementById('phone-price').innerText = totalPhonePrice;
+
+      // })
+
+      // const phoneMinus = document.getElementById('phone-minus');
+      // phoneMinus.addEventListener('click', function () {
+      // const phoneQty = document.getElementById('phone-qty');
+      // const phoneQtyNum = parseInt(phoneQty.value);
+      // const updatePhoneQty = phoneQtyNum - 1;
+      // phoneQty.value = updatePhoneQty;
+      // const totalPhonePrice = phoneQtyNum * 1219;
+      // document.getElementById('phone-price').innerText = totalPhonePrice;
+      // })
+
+
+
+
+      // const casePlus = document.getElementById('case-plus');
+      // casePlus.addEventListener('click', function () {
+      //    const caseQty = document.getElementById('case-qty');
+      //    const caseQtyNum = parseInt(caseQty.value);
+      //    const updateCaseQty = caseQtyNum + 1;
+      //    caseQty.value = updateCaseQty;
+
+      //    const caseTotalPrice = updateCaseQty * 59;
+
+      //    document.getElementById('case-price').innerText = caseTotalPrice;
+      // })
+
+      // const caseMinus = document.getElementById('case-minus');
+      // caseMinus.addEventListener('click', function () {
+      //    const caseQty = document.getElementById('case-qty');
+      //    const caseQtyNum = parseInt(caseQty.value);
+      //    const updateCaseQty = caseQtyNum - 1;
+      //    caseQty.value = updateCaseQty;
+
+      //    const caseTotalPrice = updateCaseQty * 59;
+      //    document.getElementById('case-price').innerText = caseTotalPrice;
+      // })
+
+   </script>
+
 </body>
 
 </html>
